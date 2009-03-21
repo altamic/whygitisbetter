@@ -44,6 +44,10 @@
 		.footer { text-align: center; color: #663; background-color: #eea; padding: 10px;}
 		.footer a { color: #440; } 
 		.lang a {color: inherit; text-decoration: none;}
+    .footer-badges { text-align: center; }
+    .footer-badges a { color: #777; }
+		.lang a {color: inherit; text-decoration: none;}
+    .note { text-decoration: italic; color: #666; padding: 1em; }
 	</style>
 	
 </head>
@@ -109,7 +113,7 @@
 						<div class="text">
 						  Git non funziona in tal modo. Git consente di avere parecchie branch locali che 
 						  possono essere completamente indipendenti l'una dall'altra consentendo peraltro
-						  la creazione, merging e cancellazione di linee di sviluppo secondarie.
+						  creazione, merging e cancellazione di linee di sviluppo secondarie.
 						</div>
 						
 						
@@ -174,7 +178,7 @@
 					<div class="contents">	
 
 						<div class="text">
-							Ciò è fondamentalmente vero per tutti i SCM distribuiti, ma
+							Questo vale fondamentalmente per tutti i SCM distribuiti, ma
 							dalla mia esperienza lo è ancor di più con Git. Ci sono veramente
 							poche occorrenze di 'fetch', 'pull', 'push' che non comunichino 
 							con qualcosa di diverso del tuo hard disk.
@@ -182,8 +186,8 @@
 
 						<div class="text">
 							Ciò non soltanto rende molte delle operazioni molto più veloci
-							di quanto non lo siano abitualmente, ma ti consente inoltre di 
-							lavorare alle tue cose offline.
+							di quanto non lo siano solitamente, ma ti consente inoltre di 
+							lavorare sulle tue cose in offline.
 							Anche se potrebbe non sembrare una grande cosa, vengo ogni volta
 							meravigliato da quanto spesso io lavori offline. Essere in grado di 
 							creare branch, eseguire merge, commit e navigare la storia del 
@@ -235,7 +239,7 @@
 							kernel di Linux, il che significa che ha dovuto affrontare in modo efficiente un grosso 
 							repository sin dal primo giorno. Inoltre, Git è scritto in C e riduce l'overhead dei 
 							runtime tipici dei linguaggi di più alto livello.
-							Un altro motico per cui Git è veloce è che gli sviluppatori principali hanno fatto
+							Un altro motivo per cui Git è veloce è che gli sviluppatori principali hanno fatto
 							della velocità un obiettivo progettuale dell'applicazione.
 						</div>
 
@@ -497,8 +501,8 @@
 					<div class="contents">
 
 					  <div class="text">
-               Ona delle cose più forti di un SCM distribuito, incluso Git, è quello di essere distribuito.
-               Questo significa che invece di fare un "checkout" dell'attuale punta del codice sorgente, fai 
+               Una delle cose più forti di un SCM distribuito, incluso Git, è quello di essere distribuito.
+               Questo significa che invece di fare un "checkout" dello strato più recente di codice sorgente, fai 
                un "clone" dell'intero repository.
             </div>
             <div class="text">
@@ -570,7 +574,7 @@
 						Git non ti consentirà di eseguire un push se qualcuno ha effettuato
 						un push dall'ultima volta che hai lanciato un fetch, in modo che il
 						modello centralizzato in cui tutti gli sviluppatori eseguono push
-						sullo stesso server funziona proprio bene.
+						sullo stesso server funzioni a dovere.
 					</div>
 					
 					<div class="center"><img src="images/workflow-a.png" alt="subversion-style workflow" /></div><br/>
@@ -688,7 +692,7 @@
 						Questo non era proprio vero &mdash; all'inizio della vita di Git, quando non era un 
 						vero e proprio SCM ma piuttosto un mucchio di strumenti che consentivano di avere 
 						un lavoro in modo distribuito. Comunque, oggi, il set di comandi e la curva di apprendimento 
-						di Git sono pressoché le stesse di un qualsiasi altro SCM, e anche meglio.
+						di Git sono pressoché le stesse di un qualsiasi altro SCM, se non migliori.
 					</div>
 
 					<div class="text">										
@@ -753,7 +757,7 @@ show       Show various types of objects
 				<div class="text">										
 					Prima di Git 1.6, tutti i comandi Git solevano stare nel path dei file 
 					eseguibili, cosa che risultava veramente confusionaria per le persone.
-					Sebbene Git li riconosce ancora tutti, l'unico comando nel path è adesso
+					Sebbene Git li riconosca ancora tutti, l'unico comando nel path è adesso
 					'git'.
 					Per cui, se guardi Mercurial e Git, Git ha praticamente un set di comandi 
 					ed un sistema di help identico &mdash;al giorno d'oggi c'è veramente poca 
@@ -786,13 +790,15 @@ show       Show various types of objects
     <div class="span-24 footer">
 			Questo sito è mantenuto da <a href="http://github.com/schacon">Scott Chacon</a>, un <a href="http://github.com">GitHubber</a>.<br/>
 			Se sei in disaccordo con qualsiasi cosa detta sul sito ed hai una buona ragione,  
-			<a href="mailto:michelangelo@altamore.org?subject=[Perché Git è Migliore di X]">scrivimi</a> per favore, in modo che io possa sistemarla.<br/>
-			Il sorgente di questo sito è <a href="http://github.com/michelangeloaltamore/whygitisbetter">su GitHub</a> - 
+			<a href="mailto:michelangelo@altamore.org?subject=[Perché Git è Meglio di X]">scrivimi</a> per favore, in modo che io possa sistemarla.<br/>
+			Il sorgente di questo sito è <a href="http://github.com/michelangelo-altamore/whygitisbetter">su GitHub</a> - 
 			non esitare a inviare patch se vuoi contribuire a migliorarlo.<br/>
-			<a href="http://validator.w3.org/check?uri=referer">Valid XHTML</a>
 		</div>
 
-	</div>
+        <div class="span-24 footer-badges">
+          <a href="http://validator.w3.org/check?uri=referer">Valid XHTML</a>
+        </div>
+    	</div>
 
   <script type="text/javascript">
     $(function() {
@@ -813,17 +819,22 @@ show       Show various types of objects
         return hidden
       })
 
-      $('#menu span').css('cursor', 'pointer').find('a').click(function() {
-        $('.section .contents').hide();
-        $('.section .' + this.innerHTML).parents('.section').find('.contents').show();
+      $('#menu span').css('cursor', 'pointer').click(function() {
+        $('.section .contents').hide()
+        showSectionsForSCM(this.innerHTML)
+        document.location.hash = this.innerHTML
       }) 
 
       if (document.location.hash) {
-        $('.section > h2 > a[name=' + document.location.hash.substring(1) + ']').parent('h2').click();
-        $('.section .' + document.location.hash.substring(1)).parents('.section').find('.contents').show();
-      }    
-    })
+        var anchor = document.location.hash.substring(1)
+        $('.section h2 a[name=' + anchor + ']').parent('h2').click()
+        showSectionsForSCM(anchor)
+      }
 
+      function showSectionsForSCM(scm) {
+        $('.section .' + scm).parents('.section').find('.contents').show()
+      }
+    })
   </script>
 
 <script type="text/javascript">
@@ -838,4 +849,3 @@ pageTracker._trackPageview();
 
 </body>
 </html>
-
